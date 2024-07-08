@@ -1,21 +1,20 @@
 public class Monster {
-    String name;
-    int rare;// 1:normal,2:uncommon,3:rare,4:ultra rare
+    private String name;
+  private int rare; // 戦うとレア度が高いほうが勝つ．同じ場合は引き分け
 
-    Monster() {
-        Random random = new Random();
-        this.name = this.summonMonster(random.nextInt(5));
-        this.rare = random.nextInt(5);
-    }
+  Monster(int nameNum, int rareNum) {
+    this.name = this.summonMonster(nameNum);
+    this.rare = rareNum;
+  }
 
-    String summonMonster(int mnumber) {
-        String monsters[] = { "スライム", "サハギン", "ドラゴン", "デュラハン", "シーサーペント" };
-        return monsters[mnumber];
-    }
+  String summonMonster(int mnumber) {
+    String monsters[] = { "スライム", "サハギン", "ドラゴン", "デュラハン", "シーサーペント" };
+    return monsters[mnumber];
+  }
 
-    @Override
-    public String toString() {
-        return this.name + ":レア度[" + this.rare + "]";
+  @Override
+  public String toString() {
+
+    return this.name + ":レア度[" + this.rare + "]\n";
   }
 }
-
