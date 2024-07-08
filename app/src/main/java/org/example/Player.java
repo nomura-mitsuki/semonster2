@@ -32,7 +32,7 @@ public class Player {
     String info = "";
     info += "Deck:" + this.name + "\n";
     for (int i = 0; i < 5; i++) {
-      info += this.list.get(i).toString();
+      info += this.deck.get(i).toString();
     }
     return info;
   }
