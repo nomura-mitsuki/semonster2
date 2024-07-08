@@ -8,28 +8,36 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
-public class MonsterTest {
-  @Test
-  public void testSummonMonster() {
-    Monster monster = new Monster(0, 1);
-    assertEquals("スライム", monster.summonMonster(0));
-    assertEquals("サハギン", monster.summonMonster(1));
-    assertEquals("ドラゴン", monster.summonMonster(2));
-    assertEquals("デュラハン", monster.summonMonster(3));
-    assertEquals("シーサーペント", monster.summonMonster(4));
-  }
+public class PlayerTest {
 
-  @Test
-  public void testToString() {
-    Monster monster1 = new Monster(2, 5);
-    assertEquals("ドラゴン:レア度[5]\n", monster1.toString());
-    Monster monster2 = new Monster(4, 3);
-    assertEquals("シーサーペント:レア度[3]\n", monster2.toString());
-  }
+    @Test
+    public void testDrawMonsters() {
+        Player player = new Player();
+        player.drawMonsters();
+        assertEquals(5, player.deck.size());
 
-  @Test
-  public void testMonsterConstructor() {
-    Monster monster = new Monster(1, 10);
-    assertEquals("スーパーサハギン", monster.summonMonster(1));
-  }
+        for (Monster m : player.deck) {
+            assertNotNull(m);
+            assertTrue(m.toString().matches(".+レア度\\[\\d+\\]\\n"));
+        }
+    }
+
+    @Test
+    public void testShowDeck() {
+        Player player = new Player();
+        player.drawMonsters();
+
+        // 出力の検証を行うために標準出力をリダイレクトする
+        java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
+        System.setOut(new java.io.PrintStream(outContent));
+
+        player.showDeck();
+
+        String output = outContent.toString();
+        String[] lines = output.split("\n");
+
+        // デッキのサイズと出力の行数を確認
+        assertEquals(5, player.deck.size());
+        assertEquals(5, lines.length);
+    }
 }
