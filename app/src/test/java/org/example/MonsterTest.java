@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class MonsterTest {
   @Test
-  public void testMonster() {
+  public void testSummonMonster() {
     Monster monster = new Monster();
     assertEquals(5, calculate.sum_loop(2, 3, 0)); // 2 + 3
     assertEquals(55, calculate.sum_loop(1, 10, 0)); // 1 + 2 + ... + 10
