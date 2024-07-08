@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * プレイヤーはモンスターデッキを持つ
@@ -6,8 +7,19 @@ import java.util.ArrayList;
  * Deck：MonsterのArrayList
  */
 public class Player {
+  String name;
   ArrayList<Monster> deck = new ArrayList<>();
+  
+  player() {
+    this.name = "user";
+    drawMonsters();
+  }
 
+  player(String name){
+    this.name = name;
+    drawMonsters();
+  }
+  
   public void drawMonsters() {
     for (int i = 0; i < 8; i++) {
       Random r = new Random()　% 5;
@@ -16,10 +28,13 @@ public class Player {
     }
   }
 
-  public void showDeck() {
-    for (Monster m : this.deck) {
-      System.out.println(m);
+  public String toString() {
+    String info = "";
+    info += "Deck:" + this.name + "\n";
+    for (int i = 0; i < 5; i++) {
+      info += this.list.get(i).toString();
     }
+    return info;
   }
 
 }
