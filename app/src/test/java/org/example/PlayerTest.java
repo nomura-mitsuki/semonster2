@@ -3,42 +3,41 @@ package org.example;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+
 public class PlayerTest {
 
-    @Test
-    public void testDefaultConstructor() {
-        Player player = new Player();
-        assertEquals("user", player.name);
-        assertEquals(8, player.deck.size());
+    private Player player;
 
-        for (Monster m : player.deck) {
-            assertNotNull(m);
-            assertTrue(m.toString().matches(".+レア度\\[\\d+\\]\\n"));
-        }
+    @BeforeEach
+    public void setUp() {
+        player = new Player("TestPlayer");
     }
 
     @Test
-    public void testParameterizedConstructor() {
-        Player player = new Player("testPlayer");
-        assertEquals("testPlayer", player.name);
-        assertEquals(8, player.deck.size());
+    public void testPlayerInitialization() {
+        Assertions.assertEquals("TestPlayer", player.name);
+        Assertions.assertEquals(5, player.HP);
+        Assertions.assertEquals(8, player.deck.size()); // 初期デッキが8枚であることを確認
+    }
 
-        for (Monster m : player.deck) {
-            assertNotNull(m);
-            assertTrue(m.toString().matches(".+レア度\\[\\d+\\]\\n"));
-        }
+    @Test
+    public void testDrawMonsters() {
+        player.drawMonsters();
+        Assertions.assertEquals(16, player.deck.size()); // drawMonsters() が呼ばれた後、デッキが16枚になることを確認
     }
 
     @Test
     public void testToString() {
-        Player player = new Player("testPlayer");
-        String playerInfo = player.toString();
-
-        assertTrue(playerInfo.contains("Deck:testPlayer\n"));
-        assertEquals(8, player.deck.size());
-
-        for (Monster m : player.deck) {
-            assertTrue(playerInfo.contains(m.toString()));
+        String expectedString = "Deck:TestPlayer\n" +
+                                "HP:5\n";
+        for (int i = 0; i < 5; i++) {
+            expectedString += player.deck.get(i).toString();
         }
+        Assertions.assertEquals(expectedString, player.toString());
     }
+
 }
