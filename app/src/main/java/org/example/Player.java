@@ -24,7 +24,7 @@ public class Player {
     for (int i = 0; i < 8; i++) {
       int r = rand.nextInt(5);
       int r2 = rand.nextInt(5);
-      this.deck.add(Monster(r, r2));
+      this.deck.add(new Monster(r, r2));
     }
   }
 
