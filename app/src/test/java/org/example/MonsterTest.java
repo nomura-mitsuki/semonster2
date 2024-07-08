@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class MonsterTest {
-
+　
     @Test
     public void testSummonMonster() {
         Monster monster = new Monster(0, 1);
