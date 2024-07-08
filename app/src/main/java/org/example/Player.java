@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Player {
   String name;
+  int HP = 5;
   ArrayList<Monster> deck = new ArrayList<>();
   
   player() {
@@ -31,6 +32,7 @@ public class Player {
   public String toString() {
     String info = "";
     info += "Deck:" + this.name + "\n";
+    info += "HP:" + this.HP + "\n";
     for (int i = 0; i < 5; i++) {
       info += this.deck.get(i).toString();
     }
