@@ -22,8 +22,8 @@ public class Player {
   
   public void drawMonsters() {
     for (int i = 0; i < 8; i++) {
-      Random r = new Random()　% 5;
-      Random r2 = new Random() % 5;
+      int r = rand.nextInt(5);
+      int r2 = rand.nextInt(5);
       this.deck.add(Monster(r, r2));
     }
   }
