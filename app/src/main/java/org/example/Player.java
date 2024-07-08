@@ -36,7 +36,7 @@ public class Player {
     StringBuilder info = new StringBuilder();
     info += "Deck:" + this.name + "\n";
     info += "HP:" + this.HP + "\n";
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 8; i++) {
       info += this.deck.get(i).toString();
     }
     return info.toString();
