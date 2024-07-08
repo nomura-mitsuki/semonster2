@@ -9,7 +9,12 @@ public class Monster {
 
   String summonMonster(int mnumber) {
     String monsters[] = { "スライム", "サハギン", "ドラゴン", "デュラハン", "シーサーペント" };
-    return monsters[mnumber];
+    String monstersEvol[] = { "メタルスライム", "スーパーサハギン", "ホワイトドラゴン", "ダークデュラハン", "ブラックシーサーペント" };
+    if (this.rare >= 3{
+        return monstersEvol[mnumber];
+    }else{
+        return monsters[mnumber];
+    }
   }
 
   @Override
