@@ -10,10 +10,8 @@ public class Player {
 
   public void drawMonsters() {
     for (int i = 0; i < 5; i++) {
-      Random r = new Random();
-      r = r%5;
-      Random r2 = new Random();
-      r2 = r2%5;
+      Random r = new Random()　% 5;
+      Random r2 = new Random() % 5;
       this.deck.add(new Monster(r, r2));
     }
   }
