@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,17 +13,18 @@ public class Player {
   int HP = 5;
   ArrayList<Monster> deck = new ArrayList<>();
   
-  player() {
+  Player() {
     this.name = "user";
     drawMonsters();
   }
 
-  player(String name){
+  Player(String name){
     this.name = name;
     drawMonsters();
   }
   
   public void drawMonsters() {
+    Random rand = new Random();
     for (int i = 0; i < 8; i++) {
       int r = rand.nextInt(5);
       int r2 = rand.nextInt(5);
